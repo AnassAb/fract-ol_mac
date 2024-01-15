@@ -6,7 +6,7 @@
 /*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:44:58 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/15 11:04:35 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:45:07 by anassab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define HEIGHT 1000
 
 #include "mlx/mlx.h"
-// #include "math.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -43,8 +42,9 @@ typedef struct fractal_data
     double  radius;
     int     id;
     int     max_i;
-    t_vec   o;
     t_vec   c;
+    t_vec   o;
+    t_vec   draw_o;
 }   t_fractal;
 
 typedef struct mlx_data
@@ -65,7 +65,6 @@ int		check_constant(char *x);
 double  check_convergence(t_mlx mlx, t_vec z, t_vec c);
 
 //MLX UTILS
-void    my_put_pixel(t_mlx *mlx, int color, int px);
 int     keypress_handler(int key, t_mlx *mlx);
 int     stop_connection(t_mlx *mlx);
 int     zoom(int button, int x, int y, t_mlx *mlx);

@@ -6,7 +6,7 @@
 /*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:42:07 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/15 11:07:47 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:45:25 by anassab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void    set_defaults(t_mlx *mlx)
 {
     mlx->f.o.x = WIDTH / 2;
 	mlx->f.o.y = HEIGHT / 2;
+    mlx->f.draw_o.x = WIDTH / 2;
+	mlx->f.draw_o.y = HEIGHT / 2;
 	mlx->f.max_i = 80;
 	mlx->f.radius = 2;
 	mlx->f.zoom = 1;
