@@ -6,7 +6,7 @@
 /*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:44:58 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/15 13:45:07 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:51:16 by anassab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "mlx/mlx.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 
 typedef struct  vector_coor
 {

@@ -6,13 +6,11 @@
 /*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:30:48 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/15 11:55:53 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:51:29 by anassab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-clock_t tic, toc;
 
 static void draw_julia(t_mlx *mlx)
 {
