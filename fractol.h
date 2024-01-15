@@ -71,6 +71,6 @@ int     stop_connection(t_mlx *mlx);
 int     zoom(int button, int x, int y, t_mlx *mlx);
 
 //DRAWING UTILS
-void    render_fractal(t_mlx *mlx);
+void    render_fractal(t_mlx *mlx, int nb);
 
 #endif

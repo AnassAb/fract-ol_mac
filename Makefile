@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -framework OpenGL -framework AppKit
+MLXFLAGS = -lX11 -lXext
 MATHFLAGS = -lm
 SRCS = drawing_utils.c string_utils.c fractol.c ft_atof.c math_utils.c mlx_utils.c
 HFILE = fractol.h

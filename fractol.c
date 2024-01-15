@@ -79,15 +79,11 @@ void    create_window(t_mlx *mlx, char *title)
 int main(int ac, char **av)
 {
     t_mlx   mlx;
-    clock_t tic, toc;
 
     set_defaults(&mlx);
     mlx.f.id = check_params(&mlx, ac, av);
     create_window(&mlx, av[1]);
-    tic = clock();
-    render_fractal(&mlx);
-    toc = clock();
-    printf("[RENDER FRACTAL] time spent: %f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    render_fractal(&mlx, 0);
     mlx_key_hook(mlx.win_ptr, keypress_handler, &mlx);
     mlx_hook(mlx.win_ptr, 17, 0L, stop_connection, &mlx);
     mlx_hook(mlx.win_ptr, 4, 1L << 2, zoom, &mlx);

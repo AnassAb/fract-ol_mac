@@ -12,8 +12,6 @@
 
 #include "fractol.h"
 
-clock_t tic, toc;
-
 void    my_put_pixel(t_mlx *mlx, int color, int px)
 {
 	*(unsigned int*)(mlx->img.addr + px) = color;
@@ -32,11 +30,7 @@ int keypress_handler(int key, t_mlx *mlx)
 		mlx->f.o.x += 100;
 	if (key == 65364 || key == 125) //DOWN : v
 		mlx->f.o.y += 100;
-    mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-    tic = clock();
-    render_fractal(mlx);
-    toc = clock();
-    printf("[KEY_HOOK: RENDER] time spent: %f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    render_fractal(mlx, 1);
     return (0);
 }
 
@@ -44,6 +38,7 @@ int stop_connection(t_mlx *mlx)
 {
     mlx_destroy_image(mlx->mlx_ptr, mlx->img.ptr);
     mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+    mlx_destroy_display(mlx->mlx_ptr);
     free(mlx->mlx_ptr);
     exit (0);
     return (0);
@@ -58,11 +53,7 @@ int zoom(int btn, int x, int y, t_mlx *mlx)
             mlx->f.zoom *= 1.3;
         else
             mlx->f.zoom *= 0.7;
-        mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-        tic = clock();
-        render_fractal(mlx);
-        toc = clock();
-        printf("[MOUSE: RENDER] time spent: %f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+        render_fractal(mlx, 1);
     }
     return (0);
 }

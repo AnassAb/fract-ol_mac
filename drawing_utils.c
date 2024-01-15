@@ -47,17 +47,17 @@ static void draw_mandelbrot(t_mlx *mlx)
     }
 }
 
-void render_fractal(t_mlx *mlx)
+void render_fractal(t_mlx *mlx, int nb)
 {
+    if (nb)
+        mlx_destroy_image(mlx->mlx_ptr, mlx->img.ptr);
     mlx->img.ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
     mlx->img.addr = mlx_get_data_addr(mlx->img.ptr, &mlx->img.pbits, &mlx->img.sline, &mlx->img.e);
-    tic = clock();
     if (mlx->f.id == 1)
         draw_mandelbrot(mlx);
     if (mlx->f.id == 2)
         draw_julia(mlx);
-    toc = clock();
-    printf("\t[DRAW] time spent: %f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
     mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.ptr,0,0);
 }
 
