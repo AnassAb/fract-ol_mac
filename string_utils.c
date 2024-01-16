@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:05:22 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/12 18:30:36 by aabidar          ###   ########.fr       */
+/*   Updated: 2024/01/16 17:56:38 by anassab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	ft_putstr(char *str)
 		ft_putchar(str[i++]);
 }
 
-static int     ft_isdigit(int c)
+static int	ft_isdigit(int c)
 {
-        if (c < 48 || c > 57)
-                return (0);
-        return (1);
+	if (c < 48 || c > 57)
+		return (0);
+	return (1);
 }
 
-int		check_constant(char *x)
+int	check_constant(char *x)
 {
 	int	i;
 	int	pts;

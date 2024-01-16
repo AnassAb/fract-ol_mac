@@ -10,7 +10,7 @@ NAME = fractol
 LIBMLX = mlx/libmlx.a
 
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJS) $(LIBMLX) $(HFILE)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBMLX) $(MLXFLAGS) $(MATHFLAGS) -o $@
