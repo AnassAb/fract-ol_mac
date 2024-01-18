@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:42:07 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/16 17:57:00 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:23:55 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	set_defaults(t_mlx *mlx)
 	mlx->f.max_i = 80;
 	mlx->f.radius = 2;
 	mlx->f.zoom = 1;
+	mlx->f.color.a = 1;
+	mlx->f.color.r = 21;
+	mlx->f.color.g = 0;
+	mlx->f.color.b = 51;
 }
 
 void	show_help(void)
@@ -55,6 +59,8 @@ int	check_params(t_mlx *mlx, int ac, char **av)
 	{
 		if (!ft_strcmp(av[1], "Mandelbrot") || !ft_strcmp(av[1], "mandelbrot"))
 			return (1);
+		if (!ft_strcmp(av[1], "burning ship") || !ft_strcmp(av[1], "BS"))
+			return (3);
 	}
 	else if (ac == 4 && (!ft_strcmp(av[1], "julia") || !ft_strcmp(av[1],
 				"Julia")))
@@ -63,6 +69,7 @@ int	check_params(t_mlx *mlx, int ac, char **av)
 		{
 			mlx->f.c.x = ft_atof(av[2]);
 			mlx->f.c.y = ft_atof(av[3]);
+			printf("c(%f, %f)\n", mlx->f.c.x, mlx->f.c.y);
 			return (2);
 		}
 	}

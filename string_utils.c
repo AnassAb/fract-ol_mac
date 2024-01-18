@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:05:22 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/16 17:56:38 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:20:36 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	check_constant(char *x)
 
 	i = 0;
 	pts = 0;
+	if (x[i] == '-' || x[i] == '+')
+		i++;
 	while (x[i])
 	{
 		if (!(ft_isdigit(x[i]) || (!pts && x[i] == '.')))

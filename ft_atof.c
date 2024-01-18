@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:04:37 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/16 17:54:02 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:59:45 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math.h"
+#include <stdio.h>
 
 static int	ft_isdigit(int c)
 {
@@ -26,9 +27,9 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-static float	ft_calc_float(char *s, int i)
+static double	ft_calc_float(char *s, int i)
 {
-	float	res;
+	double	res;
 	int		exp;
 
 	res = 0;
@@ -51,11 +52,11 @@ static float	ft_calc_float(char *s, int i)
 	return (res);
 }
 
-float	ft_atof(char *s)
+double	ft_atof(char *s)
 {
-	float	res;
+	double	res;
 	int		i;
-	int		sg;
+	double	sg;
 
 	i = 0;
 	sg = 1;

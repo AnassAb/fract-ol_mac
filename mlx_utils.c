@@ -3,39 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anassab <anassab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:17:35 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/16 17:57:45 by anassab          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:01:09 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	keypress_handler(int key, t_mlx *mlx)
+void	arrow_shifting(int key, t_mlx *mlx, double rx, double ry)
 {
-	if (key == 65307 || key == 53)
-		stop_connection(mlx);
 	if (key == 65361 || key == 123)
 	{
-		mlx->f.max.x += 0.1 * mlx->f.zoom;
-		mlx->f.min.x += 0.1 * mlx->f.zoom;
+		mlx->f.max.x += rx / 10;
+		mlx->f.min.x += rx / 10;
 	}
 	if (key == 65362 || key == 126)
 	{
-		mlx->f.max.y += 0.1 * mlx->f.zoom;
-		mlx->f.min.y += 0.1 * mlx->f.zoom;
+		mlx->f.max.y += ry / 10;
+		mlx->f.min.y += ry / 10;
 	}
 	if (key == 65363 || key == 124)
 	{
-		mlx->f.max.x -= 0.1 * mlx->f.zoom;
-		mlx->f.min.x -= 0.1 * mlx->f.zoom;
+		mlx->f.max.x -= rx / 10;
+		mlx->f.min.x -= rx / 10;
 	}
 	if (key == 65364 || key == 125)
 	{
-		mlx->f.max.y -= 0.1 * mlx->f.zoom;
-		mlx->f.min.y -= 0.1 * mlx->f.zoom;
+		mlx->f.max.y -= ry / 10;
+		mlx->f.min.y -= ry / 10;
 	}
+}
+
+int	keypress_handler(int key, t_mlx *mlx)
+{
+	printf("key ==> %d\n", key);
+	if (key == 65307 || key == 53)
+		stop_connection(mlx);
+	arrow_shifting(key, mlx, mlx->f.max.x - mlx->f.min.x, mlx->f.max.y
+		- mlx->f.min.y);
+	if (key == 61 || key == 65451)
+		mlx->f.max_i += 50;
+	if (key == 45 || key == 65453)
+		mlx->f.max_i -= 50;
+	if (key == 97)
+		mlx->f.color.a += 10;
+	if (key == 114)
+		mlx->f.color.r += 10;
+	if (key == 103)
+		mlx->f.color.g += 10;
+	if (key == 98)
+		mlx->f.color.b += 10;
+	if (key == 100)
+		set_defaults(mlx);
 	render_fractal(mlx, 1);
 	return (0);
 }
@@ -44,7 +65,7 @@ int	stop_connection(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img.ptr);
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	// mlx_destroy_display(mlx->mlx_ptr);
+	mlx_destroy_display(mlx->mlx_ptr);
 	free(mlx->mlx_ptr);
 	exit(0);
 	return (0);
