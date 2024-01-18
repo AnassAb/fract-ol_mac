@@ -9,7 +9,7 @@ NAME = fractol
 LIBMLX = mlx/libmlx.a
 
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBMLX) $(HFILE)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBMLX) $(MLXFLAGS) -lm -o $@
@@ -28,3 +28,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: re clean fclean all

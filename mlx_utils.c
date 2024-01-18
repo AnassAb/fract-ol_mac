@@ -6,7 +6,7 @@
 /*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:17:35 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/18 14:01:09 by aabidar          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:25:49 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	arrow_shifting(int key, t_mlx *mlx, double rx, double ry)
 
 int	keypress_handler(int key, t_mlx *mlx)
 {
-	printf("key ==> %d\n", key);
 	if (key == 65307 || key == 53)
 		stop_connection(mlx);
 	arrow_shifting(key, mlx, mlx->f.max.x - mlx->f.min.x, mlx->f.max.y

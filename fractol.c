@@ -6,7 +6,7 @@
 /*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:42:07 by aabidar           #+#    #+#             */
-/*   Updated: 2024/01/18 12:23:55 by aabidar          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:30:53 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	set_defaults(t_mlx *mlx)
 	mlx->f.max.y = 2;
 	mlx->f.min.y = -2;
 	mlx->f.min.x = -2;
-	mlx->f.mouse.x = -2;
-	mlx->f.mouse.y = -2;
-	mlx->f.max_i = 80;
+	mlx->f.max_i = 100;
 	mlx->f.radius = 2;
 	mlx->f.zoom = 1;
 	mlx->f.color.a = 1;
@@ -35,18 +33,14 @@ void	show_help(void)
 {
 	ft_putstr("Fract-ol\n");
 	ft_putstr("---------------------------\n");
-	ft_putstr("Usage: ./fract-ol [fractal_name] ");
+	ft_putstr("Usage: ./fractol [fractal_name] ");
 	ft_putstr("[constant_x (for Julia)] [constant_y (for Julia)]\n");
 	ft_putstr("Fractal Types:\n\t");
-	ft_putstr("Mandelbrot - Mandelbrot Set\n\tJulia - Julia Set\n");
-	ft_putstr("----------------------------\n");
-	ft_putstr("Constant for Julia Set:\n\t");
-	ft_putstr("-1.4142 <= x <= 1.4142");
-	ft_putstr("\n\t");
-	ft_putstr("-1.4142 <= y <= 1.4142");
-	ft_putstr("\n");
+	ft_putstr("Mandelbrot/m - Mandelbrot Set\n\tJulia/j - Julia Set\n");
+	ft_putstr("\tBurning ship/bs - Burning Ship Set\n");
 	ft_putstr("----------------------------\n");
 	ft_putstr("Examples:\n\t./fract-ol Mandelbrot\n\t");
+	ft_putstr("./fract-ol Burning ship\n\t");
 	ft_putstr("./fract-ol Julia -0.8 0.156 \n");
 	ft_putstr("To quit:\n\tPress ESC button.\n");
 	ft_putstr("\tClick on 'X' at the top of the window\n");
@@ -57,13 +51,12 @@ int	check_params(t_mlx *mlx, int ac, char **av)
 {
 	if (ac == 2)
 	{
-		if (!ft_strcmp(av[1], "Mandelbrot") || !ft_strcmp(av[1], "mandelbrot"))
+		if (!ft_strcmp(av[1], "Mandelbrot") || !ft_strcmp(av[1], "m"))
 			return (1);
-		if (!ft_strcmp(av[1], "burning ship") || !ft_strcmp(av[1], "BS"))
+		if (!ft_strcmp(av[1], "Burning ship") || !ft_strcmp(av[1], "bs"))
 			return (3);
 	}
-	else if (ac == 4 && (!ft_strcmp(av[1], "julia") || !ft_strcmp(av[1],
-				"Julia")))
+	else if (ac == 4 && (!ft_strcmp(av[1], "j") || !ft_strcmp(av[1], "Julia")))
 	{
 		if (check_constant(av[2]) && check_constant(av[3]))
 		{
